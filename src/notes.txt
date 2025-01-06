@@ -1,0 +1,17 @@
+in home page , 2 mystrymessage
+
+for password missmatch  - no username / email showing 
+
+ai showing prob 
+http://192.168.1.4:3000/u/trisha
+ github actions 
+the user is ----------------- {
+  name: undefined,
+  email: 'trishasengupta27@gmail.com',
+  image: undefined,
+  _id: '6777faa712cd2b45c911b150',
+  isVerified: true,
+  isAcceptingMessages: undefined,
+  username: 'trisha' 
+}
+why the undefined and why image 
