@@ -4,15 +4,14 @@ import { authOptions } from "../../auth/[...nextauth]/options";
 import UserModel from "@/model/user";
 import { type NextRequest } from 'next/server'
 
-interface RouteContext {
-  params: {
-    messageid: string
-  }
+type Props = {
+  params: { messageid: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
-export async function DELETE(
-    request: NextRequest,
-    context: RouteContext ){
-    const messageId = context.params.messageid
+
+export async function DELETE(request: Request, props: Props) {
+  try {
+    const messageId = props.params.messageid
     await dbConnect();
     const session = await getServerSession(authOptions)
 
