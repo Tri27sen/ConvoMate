@@ -9,9 +9,10 @@ import { authOptions } from '../../auth/[...nextauth]/options';
 
 export async function DELETE(
  request: NextRequest,
-  context: { params: Record<string, string> } 
+  context: { params: { messageid: string } } // Use this specific type for dynamic parameters
 ) {
-  const messageId = context.params;
+  const { messageid } = context.params;
+ console.log("working in delete route")
   await dbConnect();
   const session = await getServerSession(authOptions);
   const _user: User = session?.user as User;
