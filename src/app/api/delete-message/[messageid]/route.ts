@@ -49,4 +49,4 @@ export async function DELETE(request: Request, props: Props) {
             message : "Failed to delete message"
         }, {status : 500})
     }
-}
+};
