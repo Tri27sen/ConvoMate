@@ -2,17 +2,15 @@ import UserModel from '@/model/user';
 import { getServerSession } from 'next-auth/next';
 import dbConnect from '@/lib/dbconnect'
 import { User } from 'next-auth';
-import { type NextRequest } from 'next/server';
 //import { Message } from '@/model/user';
 //import { NextRequest } from 'next/server';
 import { authOptions } from '../../auth/[...nextauth]/options';
 
 export async function DELETE(
- request: NextRequest,
-  context: { params: { messageid: string } } // Use this specific type for dynamic parameters
+  request: Request,
+  { params }: { params: { messageid: string } }
 ) {
-  const { messageid } = context.params;
- console.log("working in delete route")
+  const messageId = params.messageid;
   await dbConnect();
   const session = await getServerSession(authOptions);
   const _user: User = session?.user as User;
