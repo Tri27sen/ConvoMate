@@ -8,9 +8,14 @@ import { authOptions } from '../../auth/[...nextauth]/options';
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { messageid: string } }
+ // { params }: { params: { messageid: string } }
+ context: { params: { messageid: string } }
 ) {
-  const messageId = params.messageid;
+  console.log("************")
+
+  const {messageid} =  await context.params;
+  console.log({messageid})
+ 
   await dbConnect();
   const session = await getServerSession(authOptions);
   const _user: User = session?.user as User;
@@ -22,14 +27,16 @@ export async function DELETE(
   }
 
   try {
+    console.log(`Deleting message with ID: ${messageid} by user: ${_user.email}`);
     const updateResult = await UserModel.updateOne(
       { _id: _user._id },
-      { $pull: { messages: { _id: messageId } } }
+      { $pull: { messages: { _id: new Object(messageid) } } }
     );
 
     if (updateResult.modifiedCount === 0) {
       return Response.json(
         { message: 'Message not found or already deleted', success: false },
+        
         { status: 404 }
       );
     }
