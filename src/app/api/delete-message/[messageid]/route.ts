@@ -7,8 +7,8 @@ import { User } from 'next-auth';
 import { authOptions } from '../../auth/[...nextauth]/options';
 
 export async function DELETE(
-  request: Request,
-  context: { params: { messageid: string } }
+ request: Request,
+  { params }: { params: { messageid: string } }
 ) {
   const messageId = params.messageid;
   await dbConnect();
