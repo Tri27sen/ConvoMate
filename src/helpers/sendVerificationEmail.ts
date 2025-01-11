@@ -10,6 +10,9 @@ export async function sendVerificationEmail (
   verifyCode :string
 ): Promise<ApiResponse>{
   try {
+     // Create email content synchronously
+    
+
     await resend.emails.send({
       from: 'Acme <onboarding@resend.dev>',
       to: email,
