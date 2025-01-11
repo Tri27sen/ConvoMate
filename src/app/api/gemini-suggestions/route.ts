@@ -2,10 +2,10 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { NextResponse } from 'next/server';
 
-const apiKey = process.env.YOUR_API_KEY;
-console.log(apiKey)
+const apiKey = process.env.YOUR_API_KEY!; 
+//console.log(apiKey)
 const genAI = new GoogleGenerativeAI(apiKey);
-console.log(genAI)
+//console.log(genAI)
 export async function POST(req: Request) {
   try {
     const { prompt } = await req.json();
