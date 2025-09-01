@@ -7,6 +7,7 @@ import bcryptjs from "bcryptjs";
 import  {sendVerificationEmail}  from "../../../helpers/sendVerificationEmail";
 // import  {sendVerificationEmail}  from "../../../helpers/sendVerificationEmail";
 
+console.log(process.env)
 console.log("inside the sign-up api/route........")
 
 export async function POST(request: NextRequest){
