@@ -3,7 +3,7 @@ import UserModel from "@/model/user";
 import {z} from "zod"
 import { usernameVlaidation } from "@/schemas/signUpSchema";
 
-
+console.log(process.env)
 const UserQuerySchema = z.object({
   username : usernameVlaidation
 })
